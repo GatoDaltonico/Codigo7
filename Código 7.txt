@@ -1,0 +1,49 @@
+//Verónica Chávez, me evaluó Verónica Herrera con 5/5, todo corre bien y se hicieron las correcciones pertinentes
+package codigo5;
+
+package codigo7;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Codigo7 {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in); // Corrección del constructor de Scanner
+
+        HashMap<String, String> capitales = new HashMap<>(); // Corrección del tipo de HashMap
+
+        // Corrección en la inserción de elementos en el HashMap
+        capitales.put("Canadá", "Ottawa");
+        capitales.put("Estados Unidos", "Washington DC");
+        capitales.put("México", "Ciudad de México"); //Actualizar el nombre de la capital
+        capitales.put("Belice", "Belmopán");
+        capitales.put("Costa Rica", "San José");
+        capitales.put("El Salvador", "San Salvador"); // Añadida la capital faltante
+        capitales.put("Guatemala", "Ciudad de Guatemala");
+        capitales.put("Honduras", "Tegucigalpa");
+        capitales.put("Nicaragua", "Managua");
+        capitales.put("Panamá", "Panamá");
+
+        String pais = ""; // Cambio de nombre de variable para mayor claridad
+        do {
+            System.out.print("Escribe el nombre de un país y te diré su capital (o escribe 'Salir' para finalizar): "); // Corrección en la salida del texto
+            pais = s.nextLine(); // Corrección del método para leer una cadena de texto
+
+            if (!pais.equals("Salir")) { // Corrección del método equals
+                if (capitales.containsKey(pais)) { // Corrección del método para comprobar la clave
+                    System.out.print("La capital de " + pais);
+                    System.out.println(" es " + capitales.get(pais)); // Corrección para obtener el valor del HashMap
+                } else {
+                    System.out.print("No conozco la respuesta. ");
+                    System.out.print("¿Cuál es la capital de " + pais + "?: ");
+                    String capital = s.nextLine(); // Cambio de nombre de variable para mayor claridad
+                    capitales.put(pais, capital); // Corrección para añadir la nueva capital al HashMap
+                    System.out.println("Gracias por enseñarme nuevas capitales.");
+                }
+            }
+        } while (!pais.equals("Salir")); // Corrección del bucle while
+
+        s.close(); // Cerrando el scanner
+    }
+}
+
